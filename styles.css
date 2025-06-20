@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verde Urbano</title>
+    <!-- Enlace a Google Fonts para la fuente Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      /* Estilos CSS simplificados: sin color, planos, agrupados en una hoja, con diseño de una columna */
+      body {
+        font-family: 'Inter', sans-serif; /* Aplica la fuente Inter al body */
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px; /* Padding añadido aquí */
+        background-color: #2c3e50; /* Color de fondo añadido aquí */
+        color: white; /* Color de texto añadido aquí */
+      }
+
+      /* Estilos para la cabecera (fondo oscuro, texto blanco, con navegación integrada) */
+      header {
+        background-color: #333; /* Fondo oscuro */
+        color: #ffffff;
+        padding: 20px; /* Padding ajustado para dar más espacio */
+        text-align: center; /* Centrar el contenido de la cabecera */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil en la parte inferior de la cabecera */
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.8rem; /* Título más grande para mayor prominencia */
+        color: #4CAF50; /* Color verde para el título de la página */
+        margin-bottom: 15px; /* Espacio debajo del título antes de la nav */
+      }
+
+      /* Estilos para la navegación dentro de la cabecera */
+      nav ul {
+        list-style: none; /* Sin viñetas */
+        padding: 0;
+        margin: 0;
+        display: flex; /* Muestra los elementos de la lista en línea */
+        justify-content: center; /* Centra los enlaces */
+        flex-wrap: wrap; /* Permite que los enlaces se envuelvan en pantallas pequeñas */
+      }
+
+      nav li {
+        margin: 0 15px; /* Espaciado entre elementos de la lista */
+      }
+
+      nav a {
+        color: white; /* Color de enlace blanco */
+        text-decoration: none; /* Sin subrayado por defecto */
+        padding: 10px; /* Padding de 10 píxeles para separar los enlaces */
+        font-size: 1rem;
+        transition: background-color 0.3s ease; /* Transición suave para el hover */
+        white-space: nowrap; /* Evitar que el texto del enlace se rompa */
+      }
+
+      nav a:hover {
+        background-color: '#A5D6A7'; /* Color de fondo verde claro al pasar el ratón */
+        color: #333; /* Color de texto oscuro para mayor contraste */
+      }
+
+      /* Clase para limitar el ancho y centrar el contenido */
+      .container {
+        max-width: 1000px; /* Limita el ancho máximo a 1000 píxeles */
+        margin-left: auto; /* Centra el contenido horizontalmente */
+        margin-right: auto; /* Centra el contenido horizontalmente */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Sombra muy sutil para todo el contenedor */
+        border-radius: 5px; /* Bordes ligeramente redondeados para todo el contenedor */
+        overflow: hidden; /* Asegura que la sombra y los bordes se apliquen correctamente si el contenido desborda */
+      }
+
+      /* Contenedor principal de una sola columna */
+      main {
+        margin-top: 20px; /* Margen superior para separar del header */
+        margin-bottom: 20px; /* Margen inferior para separar del footer */
+        background-color: #ffffff; /* Fondo blanco para la "hoja" */
+        padding: 25px; /* Padding interno */
+      }
+
+      /* Estilos para cada sección */
+      section {
+        padding: 40px 20px; /* Padding interno de 40px arriba/abajo, 20px a los lados */
+        margin-bottom: 30px; /* Margin bottom de 30px */
+        background-color: #f4f4f4; /* Color de fondo gris claro para las secciones */
+        border-radius: 8px; /* Bordes ligeramente redondeados para las secciones */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra sutil para un efecto de elevación */
+        border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil para las secciones */
+      }
+
+      section:last-of-type {
+        margin-bottom: 0; /* Eliminar el margin-bottom en la última sección para que el footer no quede tan separado */
+      }
+
+      section h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.8rem; /* Tamaño de fuente ligeramente más pequeño para los títulos de sección */
+        color: #333;
+        padding-bottom: 5px;
+        text-align: center; /* Títulos de sección centrados */
+        text-decoration: underline; /* Subraya los títulos h2 */
+      }
+
+      /* Excepción: el título de la sección de inicio no tendrá subrayado */
+      #inicio h2 {
+        text-decoration: none;
+      }
+
+      section p {
+        font-size: 1.1rem; /* El tamaño de fuente base para párrafos se ha incrementado a 1.1rem */
+        line-height: 1.6; /* Aumenta el interlineado para mejorar la legibilidad */
+        color: #555;
+        margin-bottom: 25px; /* Aumentado a 25px para mayor separación entre párrafos */
+        text-align: justify; /* Justificar texto */
+      }
+
+      /* El párrafo introductorio es un poco más grande */
+      #inicio p {
+        font-size: 1.2rem; /* Tamaño de fuente ligeramente más grande para el párrafo introductorio */
+      }
+
+      section img {
+        max-width: 100%;
+        height: auto;
+        display: block; /* Asegurar que la imagen no tenga texto flotando */
+        margin: 15px auto 0; /* Centrar imágenes */
+        border: 1px solid #eee; /* Borde muy sutil para imágenes */
+      }
+
+      /* Estilos para el pie de página (fondo oscuro) */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333; /* Fondo oscuro */
+        color: #ffffff;
+        margin-top: 30px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        header {
+          padding: 15px 10px;
+        }
+        header h1 {
+          font-size: 2.2rem;
+          margin-bottom: 10px;
+        }
+        nav ul {
+          flex-direction: column; /* Apilar enlaces en pantallas pequeñas */
+        }
+        nav li {
+          margin: 5px 0; /* Espaciado ajustado para móviles */
+        }
+        main {
+          margin: 15px auto;
+          padding: 15px;
+        }
+        section {
+          padding: 30px 15px; /* Ajuste de padding para pantallas pequeñas */
+        }
+        section h2 {
+          font-size: 1.8rem; /* Asegura el tamaño en móviles */
+        }
+        section p {
+          font-size: 1rem; /* Ajuste de fuente para móviles */
+          margin-bottom: 20px; /* Ajuste de margen inferior para móviles */
+        }
+        #inicio p {
+          font-size: 1.1rem; /* Ajuste del tamaño de fuente del párrafo introductorio para móviles */
+        }
+      }
+
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 1.8rem;
+        }
+        nav a {
+          font-size: 0.9rem;
+        }
+        section h2 {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contenedor principal para limitar el ancho y centrar todo el contenido de la página -->
+    <div class="container">
+      <header>
+        <h1>Verde Urbano</h1>
+        <nav>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#guia-cultivo">Guía de Cultivo</a></li>
+            <li><a href="#manos-tierra">Manos a la Tierra</a></li>
+            <li><a href="#cuidados-consejos">Cuidados y Consejos</a></li>
+            <li><a href="#bitacora-verde">Bitácora Verde</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section id="inicio">
+          <h2>Bienvenido a la Aventura</h2>
+          <p>
+            <strong>Te doy la bienvenida a Verde Urbano, el espacio dedicado a demostrar
+            que no necesitas un gran jardín para rodearte de naturaleza. Aquí
+            encontrarás la inspiración y los consejos prácticos para transformar
+            tu balcón, ventana o azotea en un refugio lleno de vida. Anímate a
+            explorar y empieza a cultivar tu propio oasis en el corazón de la
+            ciudad.</strong>
+          </p>
+          <!-- Imagen de Bonsái de Pexels actuando como un banner -->
+          <img
+            src="https://images.pexels.com/photos/32518275/pexels-photo-32518275.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+            alt="Un bonsái, un ejemplo de paciencia y detalle en la jardinería."
+            onerror="this.onerror=null; this.src='https://placehold.co/800x400/cccccc/000000?text=Imagen+Bonsai+No+Cargada';"
+            style="
+              width: 100%;
+              height: auto;
+              display: block;
+              margin: 15px auto 0;
+              border: 1px solid #eee;
+            "
+          />
+        </section>
+
+        <section id="guia-cultivo">
+          <h2>Guía de Cultivo</h2>
+          <p>
+            Esta sección es tu recurso esencial para iniciar y expandir tu jardín
+            urbano, transformando cualquier espacio, grande o pequeño, en un oasis
+            verde. Aquí encontrarás fichas detalladas de una amplia variedad de
+            plantas ideales para el entorno citadino, incluyendo hortalizas
+            frescas para tu cocina, hierbas aromáticas que perfumarán tu balcón, y
+            vibrantes flores que añadirán color y vida. Nuestra guía te permitirá
+            organizar tus opciones por nivel de dificultad, haciendo que la
+            jardinería sea accesible para todos, desde principiantes hasta
+            expertos. Con consejos sobre la elección de semillas, tipos de suelo y
+            las mejores épocas de siembra, ¡descubrirás qué sembrar hoy para
+            cosechar mañana!
+          </p>
+        </section>
+
+        <section id="manos-tierra">
+          <h2>Manos a la Tierra</h2>
+          <p>
+            Bienvenido al espacio perfecto para tus proyectos "Hazlo Tú Mismo"
+            (DIY) en el jardín urbano. En esta sección, te guiaremos a través de
+            tutoriales paso a paso para construir soluciones ingeniosas que
+            maximicen tu espacio y recursos. Aprenderás a diseñar y edificar
+            maceteros verticales creativos que te permitirán cultivar más en menos
+            área, implementar sistemas de riego caseros y eficientes para mantener
+            tus plantas hidratadas con un mínimo esfuerzo, y preparar tu propio
+            sustrato orgánico rico en nutrientes para asegurar un crecimiento
+            óptimo y saludable. ¡Prepárate para ensuciarte las manos y transformar
+            tu hogar en un laboratorio verde de innovación!
+          </p>
+        </section>
+
+        <section id="cuidados-consejos">
+          <h2>Cuidados y Consejos</h2>
+          <p>
+            Este es tu rincón definitivo para resolver todas esas dudas generales
+            sobre el mantenimiento y bienestar de tu jardín urbano. Aquí
+            abordaremos temas cruciales como el control de plagas de forma
+            natural, utilizando soluciones ecológicas que protegen tus plantas y
+            el medio ambiente. Te proporcionaremos las mejores técnicas de riego
+            adaptadas para plantas en macetas, asegurando que reciban la cantidad
+            justa de agua. Aprenderás cómo abonar correctamente para nutrir tus
+            cultivos y fortalecer su crecimiento, y descubrirás otros trucos
+            probados por jardineros urbanos para mantener un jardín sano, robusto
+            y floreciente durante todas las estaciones del año. ¡Tu jardín, más
+            verde y vibrante que nunca!
+          </p>
+        </section>
+
+        <section id="bitacora-verde">
+          <h2>Bitácora Verde</h2>
+          <p>
+            Descubre "Bitácora Verde", tu blog y diario personal interactivo
+            dentro de nuestro sitio. Este es el lugar perfecto para sumergirte en
+            el viaje de la jardinería urbana, compartiendo tus propias
+            experiencias, tanto los éxitos que te llenan de orgullo como los
+            pequeños fracasos de los que has aprendido. Documenta el progreso
+            continuo de tu jardín a lo largo de las estaciones, desde la primera
+            semilla hasta la cosecha. Aquí, la comunidad se une para inspirarse
+            mutuamente a través de historias reales, aprender de las vivencias de
+            otros jardineros y celebrar cada nuevo brote y cada hoja verde.
+            ¡Anímate a compartir tu viaje verde con nosotros y forma parte de esta
+            creciente familia de amantes de la naturaleza en la ciudad!
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p>© 2025 Verde Urbano. Todos los derechos reservados.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verde Urbano</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Estilos CSS simplificados: sin color, planos, agrupados en una hoja, con diseño de una columna */
+      body {
+        font-family: "Inter", sans-serif; /* Aplica la fuente Inter al body */
+        line-height: 1.6;
+        margin: 0;
+        padding: 40px; /* Padding aumentado para crear más espacio con el fondo azul */
+        background-color: #2c3e50; /* Color de fondo añadido aquí */
+        color: white; /* Color de texto añadido aquí */
+      }
+
+      /* Estilos para la cabecera (fondo oscuro, texto blanco, con navegación integrada) */
+      header {
+        background-color: #333; /* Fondo oscuro */
+        color: #ffffff;
+        padding: 20px; /* Padding ajustado para dar más espacio */
+        text-align: center; /* Centrar el contenido de la cabecera */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil en la parte inferior de la cabecera */
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.8rem; /* Título más grande para mayor prominencia */
+        color: #4caf50; /* Color verde para el título de la página */
+        margin-bottom: 15px; /* Espacio debajo del título antes de la nav */
+      }
+
+      /* Estilos para la navegación dentro de la cabecera */
+      nav ul {
+        list-style: none; /* Sin viñetas */
+        padding: 0;
+        margin: 0;
+        display: flex; /* Muestra los elementos de la lista en línea */
+        justify-content: center; /* Centra los enlaces */
+        flex-wrap: wrap; /* Permite que los enlaces se envuelvan en pantallas pequeñas */
+      }
+
+      nav li {
+        margin: 0 15px; /* Espaciado entre elementos de la lista */
+      }
+
+      nav a {
+        color: white; /* Color de enlace blanco */
+        text-decoration: none; /* Sin subrayado por defecto */
+        padding: 10px; /* Padding de 10 píxeles para separar los enlaces */
+        font-size: 1rem;
+        transition: background-color 0.3s ease; /* Transición suave para el hover */
+        white-space: nowrap; /* Evitar que el texto del enlace se rompa */
+      }
+
+      nav a:hover {
+        background-color: #a5d6a7; /* Color de fondo verde claro al pasar el ratón */
+        color: #8bc34a; /* Color de texto verde más claro que el título */
+      }
+
+      /* Clase para limitar el ancho y centrar el contenido */
+      .container {
+        max-width: 1000px; /* Limita el ancho máximo a 1000 píxeles */
+        margin-left: auto; /* Centra el contenido horizontalmente */
+        margin-right: auto; /* Centra el contenido horizontalmente */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Sombra muy sutil para todo el contenedor */
+        border-radius: 5px; /* Bordes ligeramente redondeados para todo el contenedor */
+        overflow: hidden; /* Asegura que la sombra y los bordes se apliquen correctamente si el contenido desborda */
+      }
+
+      /* Contenedor principal de una sola columna */
+      main {
+        margin-top: 40px; /* Margen superior aumentado para separar de la cabecera */
+        margin-bottom: 40px; /* Margen inferior aumentado para separar del pie de página */
+        background-color: #ffffff; /* Fondo blanco para la "hoja" */
+        padding: 25px; /* Padding interno */
+      }
+
+      /* Estilos para cada sección */
+      section {
+        padding: 40px 20px; /* Padding interno de 40px arriba/abajo, 20px a los lados */
+        margin-bottom: 30px; /* Margin bottom de 30px */
+        background-color: #f4f4f4; /* Color de fondo gris claro para las secciones */
+        border-radius: 8px; /* Bordes ligeramente redondeados para las secciones */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra sutil para un efecto de elevación */
+        border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil para las secciones */
+      }
+
+      section:last-of-type {
+        margin-bottom: 0; /* Eliminar el margin-bottom en la última sección para que el footer no quede tan separado */
+      }
+
+      section h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.8rem; /* Tamaño de fuente ligeramente más pequeño para los títulos de sección */
+        color: #333;
+        padding-bottom: 5px;
+        text-align: center; /* Títulos de sección centrados */
+        text-decoration: underline; /* Subraya los títulos h2 */
+      }
+
+      /* Excepción: el título de la sección de inicio no tendrá subrayado */
+      #inicio h2 {
+        text-decoration: none;
+      }
+
+      section p {
+        font-size: 1.1rem; /* El tamaño de fuente base para párrafos se ha incrementado a 1.1rem */
+        line-height: 1.6; /* Aumenta el interlineado para mejorar la legibilidad */
+        color: #555;
+        margin-bottom: 25px; /* Aumentado a 25px para mayor separación entre párrafos */
+        text-align: justify; /* Justificar texto */
+      }
+
+      /* El párrafo introductorio es un poco más grande */
+      #inicio p {
+        font-size: 1.2rem; /* Tamaño de fuente ligeramente más grande para el párrafo introductorio */
+      }
+
+      section img {
+        max-width: 100%;
+        height: auto;
+        display: block; /* Asegurar que la imagen no tenga texto flotando */
+        margin: 15px auto 0; /* Centrar imágenes */
+        border: 1px solid #eee; /* Borde muy sutil para imágenes */
+      }
+
+      /* Estilos para el pie de página (fondo oscuro) */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333; /* Fondo oscuro */
+        color: #ffffff;
+        margin-top: 30px;
+      }
+
+      /* Estilos para los botones interactivos */
+      .interactive-button {
+        /* Clase general para los botones */
+        padding: 12px 24px;
+        background-color: #4caf50; /* Color verde del tema */
+        color: white;
+        font-weight: bold;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease,
+          box-shadow 0.2s ease;
+        display: block; /* Para que ocupe su propia línea y se centre */
+        margin: 25px auto 15px auto; /* Centrar el botón y añadir margen */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .interactive-button:hover {
+        background-color: #66bb6a; /* Verde más claro al pasar el ratón */
+        transform: translateY(-2px); /* Pequeño levantamiento */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .interactive-button:active {
+        transform: translateY(
+          0
+        ); /* Vuelve a la posición original al hacer clic */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Estilos para los párrafos de dato curioso y consejo */
+      .interactive-paragraph {
+        /* Clase general para los párrafos interactivos */
+        color: #333; /* Color de texto más oscuro para contraste en fondo claro de sección */
+        font-size: 1.3rem; /* Un poco más grande para el dato */
+        font-style: italic;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 25px; /* Espacio debajo del párrafo */
+        min-height: 3rem; /* Altura mínima para mantener el espacio aunque no haya texto */
+        display: flex; /* Para centrar verticalmente el texto si es corto */
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Estilos para el spinner de carga de la imagen */
+      .loading-spinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #4caf50; /* Color verde del tema */
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      /* Estilos para el contenedor de la imagen generada (y ahora la imagen movida) */
+      .image-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column; /* Para centrar el título y la imagen */
+        justify-content: center;
+        align-items: center;
+        min-height: 200px; /* Ajuste para el tamaño de la imagen */
+        background-color: #e2e8f0; /* Fondo claro para el contenedor de la imagen */
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      /* Estilos para las imágenes dentro de los contenedores de imagen */
+      .image-container img {
+        max-width: 80%; /* Hacer la imagen más pequeña */
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Estilos para la galería */
+      .gallery-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Centrar las imágenes si no llenan el ancho */
+        gap: 20px; /* Espacio entre las imágenes */
+        padding: 20px;
+        background-color: #e2e8f0; /* Un fondo ligeramente diferente para la galería */
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      }
+
+      .gallery-item {
+        flex: 1 1 calc(33.333% - 20px); /* 3 imágenes por fila, restando el gap */
+        max-width: calc(33.333% - 20px);
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden; /* Asegura que la imagen no se salga de los bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex; /* Para alinear el contenido verticalmente si se añade texto */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 200px; /* Altura fija para las imágenes de la galería */
+        object-fit: cover; /* Recortar la imagen para que cubra el espacio */
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .gallery-item p {
+        color: #555;
+        font-size: 0.95rem;
+        padding: 10px;
+        margin: 0;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        header {
+          padding: 15px 10px;
+        }
+        header h1 {
+          font-size: 2.2rem;
+          margin-bottom: 10px;
+        }
+        #header-image {
+          /* Estilo específico para la imagen movida si se quiere ajustar más */
+          max-width: 90%; /* Más grande en móviles para visibilidad */
+          margin: 15px auto;
+        }
+        nav ul {
+          flex-direction: column; /* Apilar enlaces en pantallas pequeñas */
+        }
+        nav li {
+          margin: 5px 0; /* Espaciado ajustado para móviles */
+        }
+        main {
+          margin-top: 30px; /* Ajuste de margen superior para móviles */
+          margin-bottom: 30px; /* Ajuste de margen inferior para móviles */
+          padding: 15px;
+        }
+        section {
+          padding: 30px 15px; /* Ajuste de padding para pantallas pequeñas */
+        }
+        section h2 {
+          font-size: 1.8rem; /* Asegura el tamaño en móviles */
+        }
+        section p {
+          font-size: 1rem; /* Ajuste de fuente para móviles */
+          margin-bottom: 20px; /* Ajuste de margen inferior para móviles */
+        }
+        #inicio p {
+          font-size: 1.1rem; /* Ajuste del tamaño de fuente del párrafo introductorio para móviles */
+        }
+        .interactive-button {
+          font-size: 1rem;
+          padding: 10px 20px;
+        }
+        .interactive-paragraph {
+          font-size: 1.1rem;
+        }
+        .loading-spinner {
+          width: 40px;
+          height: 40px;
+        }
+        /* Galería: Apilar verticalmente */
+        .gallery-item {
+          flex: 1 1 100%; /* Una imagen por fila */
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 1.8rem;
+        }
+        nav a {
+          font-size: 0.9rem;
+        }
+        section h2 {
+          font-size: 1.6rem;
+        }
+      }
+
+      /* Estilos específicos para la mini-aplicación 'Consejo Verde del Día' */
+      .consejo-container {
+        background-color: #ffffff; /* Fondo blanco, coherente con las secciones */
+        padding: 30px; /* Padding generoso */
+        border-radius: 10px; /* Bordes ligeramente más redondeados para destacarse */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra un poco más prominente */
+        text-align: center; /* Centrar el contenido interno */
+        margin: 0 auto 30px auto; /* Centra el div y le da margen inferior */
+        max-width: 500px; /* Limita el ancho de la aplicación */
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil, similar al de las secciones */
+        display: flex; /* Usar flexbox para centrado vertical y distribución */
+        flex-direction: column;
+        justify-content: space-between; /* Espacio entre elementos */
+        min-height: 200px; /* Altura mínima para el contenedor */
+      }
+
+      .consejo-container h3 {
+        font-family: "Inter", sans-serif;
+        color: #4caf50; /* Color verde principal del tema (como el título del header) */
+        font-size: 1.8rem; /* Tamaño prominente, similar a los h2 de sección */
+        font-weight: 700; /* Más audaz */
+        margin-top: 0;
+        margin-bottom: 20px; /* Espacio debajo del título */
+        text-decoration: underline; /* Subraya el título para armonizar con section h2 */
+        text-decoration-color: #8bc34a; /* Color de subrayado más claro del tema */
+      }
+
+      .consejo-container p#textoConsejo {
+        font-family: "Inter", sans-serif;
+        font-size: 1.2rem; /* Tamaño de fuente legible (un poco más grande que los párrafos de sección) */
+        line-height: 1.6; /* Interlineado adecuado, coherente */
+        color: #333; /* Color de texto más oscuro para mayor contraste */
+        margin-bottom: 25px; /* Espacio debajo del texto del consejo */
+        min-height: 3rem; /* Altura mínima para evitar saltos de diseño con textos cortos */
+        display: flex; /* Para centrar verticalmente el texto */
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1; /* Permite que ocupe el espacio disponible */
+        font-style: italic; /* Mantiene el estilo itálico para el consejo */
+
+        /* Diseño para el "recuadro" del consejo */
+        background-color: #e8f5e9; /* Un tinte verde muy claro, del tema */
+        padding: 15px;
+        border-radius: 6px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
+      }
+
+      /* El botón reutiliza la clase existente interactive-button de tu CSS principal */
+      .consejo-container button#botonNuevoConsejo {
+        /* Asegura que sobrescribe cualquier margen extra de la clase general si es necesario */
+        margin-top: 20px;
+        margin-bottom: 0; /* Asegura que no tenga margen inferior extra */
+      }
+
+      /* Media Queries para responsividad (ajustadas a las de tu sitio) */
+      @media (max-width: 768px) {
+        .consejo-container {
+          padding: 20px;
+          margin-bottom: 25px;
+        }
+        .consejo-container h3 {
+          font-size: 1.6rem;
+          margin-bottom: 15px;
+        }
+        .consejo-container p#textoConsejo {
+          font-size: 1.1rem; /* Ajustado para pantallas más pequeñas */
+          padding: 12px;
+          margin-bottom: 20px;
+        }
+        .consejo-container button#botonNuevoConsejo {
+          font-size: 1rem;
+          padding: 10px 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .consejo-container {
+          padding: 15px;
+          margin-bottom: 20px;
+          border-radius: 8px; /* Menos redondeado en móviles extremos */
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra más sutil en móviles */
+        }
+        .consejo-container h3 {
+          font-size: 1.4rem;
+        }
+        .consejo-container p#textoConsejo {
+          font-size: 1rem; /* Más pequeño para pantallas muy pequeñas */
+          min-height: 2.5rem;
+          padding: 10px;
+        }
+      }
+
+      /* --- Estilos para la mini-aplicación 'Recomendador de Productos' --- */
+      .product-recommender-app {
+        background-color: #ffffff; /* Fondo blanco, coherente con las secciones */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra similar a otras secciones */
+        margin: 0 auto 30px auto; /* Centrar y dar margen inferior */
+        max-width: 800px; /* Ancho un poco mayor para la lista de productos */
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .product-recommender-app h3 {
+        font-family: "Inter", sans-serif;
+        color: #4caf50; /* Verde principal del tema */
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 25px;
+        text-align: center;
+        text-decoration: underline;
+        text-decoration-color: #8bc34a;
+      }
+
+      .product-controls {
+        display: flex;
+        flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+        justify-content: center;
+        align-items: center;
+        gap: 15px; /* Espacio entre select y botón */
+        margin-bottom: 30px;
+      }
+
+      .product-controls label {
+        font-family: "Inter", sans-serif;
+        font-size: 1.1rem;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .product-controls select {
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        color: #555;
+        background-color: #f8f8f8;
+        cursor: pointer;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        outline: none;
+      }
+
+      .product-controls select:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+      }
+
+      /* El botón usará la clase .interactive-button existente */
+      .product-controls button {
+        margin: 0; /* Resetear los márgenes de .interactive-button */
+      }
+
+      #productList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Centrar tarjetas de producto */
+        gap: 20px; /* Espacio entre las tarjetas de producto */
+      }
+
+      .product-item {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para tarjetas individuales */
+        padding: 20px;
+        width: calc(
+          33.333% - 20px
+        ); /* 3 columnas en escritorio, ajustado por el gap */
+        box-sizing: border-box;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .product-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-item h4 {
+        font-family: "Inter", sans-serif;
+        color: #333;
+        font-size: 1.4rem;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .product-item p {
+        font-family: "Inter", sans-serif;
+        color: #555;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        flex-grow: 1; /* Permite que la descripción ocupe el espacio */
+        text-align: center; /* Centrar descripción */
+      }
+
+      .product-item .price {
+        font-family: "Inter", sans-serif;
+        color: #4caf50; /* Verde para el precio */
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-top: auto; /* Empuja el precio hacia abajo */
+      }
+
+      /* Estilo para las imágenes dentro de las tarjetas de producto */
+      .product-item img {
+        max-width: 100px; /* Ajusta este tamaño según lo desees */
+        height: auto;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      /* Responsive para el recomendador de productos */
+      @media (max-width: 768px) {
+        .product-recommender-app {
+          padding: 20px;
+        }
+        .product-recommender-app h3 {
+          font-size: 1.6rem;
+          margin-bottom: 20px;
+        }
+        .product-controls {
+          flex-direction: column; /* Apilar controles */
+          gap: 10px;
+        }
+        .product-controls label,
+        .product-controls select,
+        .product-controls button {
+          width: 100%; /* Ocupar todo el ancho */
+          max-width: 300px; /* Limitar el ancho máximo de los controles */
+        }
+        .product-item {
+          width: calc(
+            50% - 15px
+          ); /* 2 columnas en tablet, ajustado por el gap */
+          padding: 15px;
+        }
+        .product-item h4 {
+          font-size: 1.2rem;
+        }
+        .product-item p {
+          font-size: 0.9rem;
+        }
+        .product-item .price {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .product-recommender-app {
+          padding: 15px;
+        }
+        .product-recommender-app h3 {
+          font-size: 1.4rem;
+        }
+        .product-item {
+          width: 100%; /* 1 columna en móvil */
+          padding: 15px;
+        }
+      }
+
+      /* --- Estilos para la Canasta de Productos (Modal) --- */
+      .modal {
+        display: none; /* Oculto por defecto */
+        position: fixed; /* Permanece en su lugar incluso al hacer scroll */
+        z-index: 1000; /* Alto z-index para estar por encima de todo */
+        left: 0;
+        top: 0;
+        width: 100%; /* Ancho completo */
+        height: 100%; /* Alto completo */
+        overflow: auto; /* Habilitar scroll si es necesario */
+        background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+        backdrop-filter: blur(5px); /* Efecto de desenfoque */
+        -webkit-backdrop-filter: blur(5px); /* Para compatibilidad con Safari */
+        display: flex; /* Para centrar el contenido del modal */
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #888;
+        width: 80%; /* Ancho del contenido del modal */
+        max-width: 700px; /* Ancho máximo para pantallas grandes */
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: relative; /* Para posicionar el botón de cerrar */
+        color: #333; /* Color de texto para el contenido del modal */
+      }
+
+      .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute; /* Posicionamiento absoluto para el botón de cerrar */
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-button:hover,
+      .close-button:focus {
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      #cartItems {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+      }
+
+      .cart-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .cart-item:last-child {
+        border-bottom: none;
+      }
+
+      .cart-item-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .cart-item-info img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .cart-item-details strong {
+        display: block;
+        font-size: 1.1em;
+        color: #333;
+      }
+
+      .cart-item-details span {
+        font-size: 0.9em;
+        color: #666;
+      }
+
+      .cart-item-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .quantity-button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+      }
+
+      .quantity-button:hover {
+        background-color: #66bb6a;
+      }
+
+      .quantity-display {
+        font-weight: bold;
+        color: #333;
+        min-width: 25px; /* Para que no se mueva mucho */
+        text-align: center;
+      }
+
+      .remove-button {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+        transition: background-color 0.3s ease;
+      }
+
+      .remove-button:hover {
+        background-color: #c0392b;
+      }
+
+      #cartTotal {
+        font-size: 1.3em;
+        font-weight: bold;
+        text-align: right;
+        margin-top: 20px;
+        color: #333;
+      }
+
+      /* Responsive para el modal */
+      @media (max-width: 600px) {
+        .modal-content {
+          width: 95%;
+          padding: 20px;
+        }
+        .cart-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+          padding: 15px 0;
+        }
+        .cart-item-controls {
+          width: 100%;
+          justify-content: flex-end;
+          margin-top: 10px;
+        }
+        .cart-item-info {
+          width: 100%;
+          justify-content: space-between; /* Para que la imagen y los detalles se separen */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Verde Urbano</h1>
+        <nav>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#guia-cultivo">Guía de Cultivo</a></li>
+            <li><a href="#manos-tierra">Manos a la Tierra</a></li>
+            <li><a href="#cuidados-consejos">Cuidados y Consejos</a></li>
+            <li><a href="#bitacora-verde">Bitácora Verde</a></li>
+            <li><a href="#galeria-fotos">Galería</a></li>
+            <li><a href="#recomendador-productos">Productos</a></li>
+            <li>
+              <a href="#" id="openCartBtn"
+                >Canasta de Productos (<span id="cartCount">0</span>)</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section id="inicio">
+          <h2>Bienvenido a la Aventura</h2>
+          <p>
+            <strong
+              >Te doy la bienvenida a Verde Urbano, el espacio dedicado a
+              demostrar que no necesitas un gran jardín para rodearte de
+              naturaleza. Aquí encontrarás la inspiración y los consejos
+              prácticos para transformar tu balcón, ventana o azotea en un
+              refugio lleno de vida. Anímate a explorar y empieza a cultivar tu
+              propio oasis en el corazón de la ciudad.</strong
+            >
+          </p>
+
+          <button id="botonCurioso" class="interactive-button">
+            Revelar Dato Curioso
+          </button>
+
+          <p id="parrafoDato" class="interactive-paragraph"></p>
+
+          <img
+            src="https://media.admagazine.com/photos/618a646da9f7fab6f0622e00/master/w_1600%2Cc_limit/69175.jpg"
+            alt="Un espacio urbano lleno de plantas."
+            onerror="this.onerror=null; this.src='https://placehold.co/800x400/cccccc/000000?text=Imagen+Bienvenida+No+Cargada';"
+            style="
+              width: 100%;
+              height: auto;
+              display: block;
+              margin: 15px auto 0;
+              border: 1px solid #eee;
+            "
+          />
+        </section>
+
+        <section id="guia-cultivo">
+          <h2>Guía de Cultivo</h2>
+          <p>
+            Esta sección es tu recurso esencial para iniciar y expandir tu
+            jardín urbano, transformando cualquier espacio, grande o pequeño, en
+            un oasis verde. Aquí encontrarás fichas detalladas de una amplia
+            variedad de plantas ideales para el entorno citadino, incluyendo
+            hortalizas frescas para tu cocina, hierbas aromáticas que perfumarán
+            tu balcón, y vibrantes flores que añadirán color y vida. Nuestra
+            guía te permitirá organizar tus opciones por nivel de dificultad,
+            haciendo que la jardinería sea accesible para todos, desde
+            principiantes hasta expertos. Con consejos sobre la elección de
+            semillas, tipos de suelo y las mejores épocas de siembra,
+            ¡descubrirás qué sembrar hoy para cosechar mañana!
+          </p>
+
+          <button id="botonConsejo" class="interactive-button">
+            Obtener Consejo Rápido
+          </button>
+          <p id="parrafoConsejo" class="interactive-paragraph"></p>
+        </section>
+
+        <section id="manos-tierra">
+          <h2>Manos a la Tierra</h2>
+          <p>
+            Bienvenido al espacio perfecto para tus proyectos "Hazlo Tú Mismo"
+            (DIY) en el jardín urbano. En esta sección, te guiaremos a través de
+            tutoriales paso a paso para construir soluciones ingeniosas que
+            maximicen tu espacio y recursos. Aprenderás a diseñar y edificar
+            maceteros verticales creativos que te permitirán cultivar más en
+            menos área, implementar sistemas de riego caseros y eficientes para
+            mantener tus plantas hidratadas con un mínimo esfuerzo, y preparar
+            tu propio sustrato orgánico rico en nutrientes para asegurar un
+            crecimiento óptimo y saludable. ¡Prepárate para ensuciarte las manos
+            y transformar tu hogar en un laboratorio verde de innovación!
+          </p>
+        </section>
+
+        <section id="cuidados-consejos">
+          <h2>Cuidados y Consejos</h2>
+          <p>
+            Este es tu rincón definitivo para resolver todas esas dudas
+            generales sobre el mantenimiento y bienestar de tu jardín urbano.
+            Aquí abordaremos temas cruciales como el control de plagas de forma
+            natural, utilizando soluciones ecológicas que protegen tus plantas y
+            el medio ambiente. Te proporcionaremos las mejores técnicas de riego
+            adaptadas para plantas en macetas, asegurando que reciban la
+            cantidad justa de agua. Aprenderás cómo abonar correctamente para
+            nutrir tus cultivos y fortalecer su crecimiento, y descubrirás otros
+            trucos probados por jardineros urbanos para mantener un jardín sano,
+            robusto y floreciente durante todas las estaciones del año. ¡Tu
+            jardín, más verde y vibrante que nunca!
+          </p>
+
+          <div class="consejo-container">
+            <h3 id="tituloConsejo">Consejo Verde del Día</h3>
+            <p id="textoConsejo"></p>
+            <button id="botonNuevoConsejo" class="interactive-button">
+              Obtener Nuevo Consejo
+            </button>
+          </div>
+        </section>
+
+        <section id="bitacora-verde">
+          <h2>Bitácora Verde</h2>
+          <p>
+            Descubre "Bitácora Verde", tu blog y diario personal interactivo
+            dentro de nuestro sitio. Este es el lugar perfecto para sumergirte
+            en el viaje de la jardinería urbana, compartiendo tus propias
+            experiencias, tanto los éxitos que te llenan de orgullo como los
+            pequeños fracasos de los que has aprendido. Documenta el progreso
+            continuo de tu jardín a lo largo de las estaciones, desde la primera
+            semilla hasta la cosecha. Aquí, la comunidad se une para inspirarse
+            mutuamente a través de historias reales, aprender de las vivencias
+            de otros jardineros y celebrar cada nuevo brote y cada hoja verde.
+            ¡Anímate a compartir tu viaje verde con nosotros y forma parte de
+            esta creciente familia de amantes de la naturaleza en la ciudad!
+          </p>
+        </section>
+
+        <section id="recomendador-productos">
+          <h2>Encuentra tus Herramientas Verdes</h2>
+          <div class="product-recommender-app">
+            <div class="product-controls">
+              <label for="categorySelect">Filtrar por categoría:</label>
+              <select id="categorySelect">
+                <option value="Todas">Todas</option>
+                <option value="Herramientas">Herramientas</option>
+                <option value="Sustratos">Sustratos</option>
+                <option value="Semillas">Semillas</option>
+                <option value="Macetas">Macetas</option>
+                <option value="Fertilizantes">Fertilizantes</option>
+              </select>
+              <button id="searchProductsBtn" class="interactive-button">
+                Ver Productos
+              </button>
+            </div>
+            <div id="productList"></div>
+          </div>
+        </section>
+
+        <section id="galeria-fotos">
+          <h2>Galería de Inspiración Verde</h2>
+          <div class="gallery-container">
+            <div class="gallery-item">
+              <img
+                src="https://i.imgur.com/eEPcSzI.png"
+                alt="Macetas de plantas colgantes en un balcón"
+              />
+              <p>Macetas colgantes adornando un balcón urbano.</p>
+            </div>
+            <div class="gallery-item">
+              <img
+                src="https://i.imgur.com/WG0oPDI.png"
+                alt="Vista de plantas de interior con luz solar"
+              />
+              <p>Un rincón acogedor con plantas de interior y luz natural.</p>
+            </div>
+            <div class="gallery-item">
+              <img
+                src="https://i.imgur.com/bpeUOMy.png"
+                alt="Grupo de cactus en macetas"
+              />
+              <p>Colección de cactus adaptados a la vida urbana.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="image-container">
+          <h3 class="text-gray-800 text-xl font-bold mt-8 mb-4 text-center">
+            Un Oasis Urbano
+          </h3>
+          <img
+            src="https://i.imgur.com/CJEQxAH.png"
+            alt="Un balcón urbano con plantas verdes y flores."
+            onerror="this.onerror=null; this.src='https://placehold.co/600x150/cccccc/000000?text=Imagen+No+Cargada';"
+          />
+          <p class="text-gray-500 text-center text-sm mt-2">
+            La belleza de la jardinería en espacios reducidos.
+          </p>
+        </div>
+      </main>
+
+      <footer>
+        <p>© 2025 Verde Urbano. Todos los derechos reservados.</p>
+      </footer>
+    </div>
+
+    <div id="cartModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Tu Canasta de Productos</h2>
+        <ul id="cartItems"></ul>
+        <p id="cartTotal">Total: $0.00</p>
+      </div>
+    </div>
+
+    <script>
+      // Lógica para el botón interactivo de la sección de inicio
+      const botonCurioso = document.getElementById("botonCurioso");
+      const parrafoDato = document.getElementById("parrafoDato");
+
+      const datosCuriosos = [
+        "¿Sabías que la luz solar directa es crucial para la fotosíntesis? Tus plantas la necesitan para crecer sanas.",
+        "Un buen drenaje es vital para evitar que las raíces de tus plantas se pudran. Asegúrate de que tus macetas tengan agujeros.",
+        "Las lombrices de tierra son tus aliadas en el jardín; airean el suelo y lo enriquecen con sus nutrientes.",
+        "Algunas plantas, como la lavanda, no solo son hermosas sino que también repelen plagas de forma natural.",
+        "Regar tus plantas por la mañana temprano o al atardecer reduce la evaporación y permite una mejor absorción del agua.",
+      ];
+
+      let indiceDatoActual = 0;
+
+      botonCurioso.addEventListener("click", () => {
+        parrafoDato.textContent = datosCuriosos[indiceDatoActual];
+        indiceDatoActual = (indiceDatoActual + 1) % datosCuriosos.length;
+      });
+
+      // Inicializar con un dato curioso al cargar la página
+      document.addEventListener("DOMContentLoaded", () => {
+        parrafoDato.textContent = datosCuriosos[indiceDatoActual];
+        indiceDatoActual = (indiceDatoActual + 1) % datosCuriosos.length;
+      });
+
+      // Lógica para la mini-aplicación 'Consejo Verde del Día'
+      const botonNuevoConsejo = document.getElementById("botonNuevoConsejo");
+      const textoConsejo = document.getElementById("textoConsejo");
+
+      const consejosVerdes = [
+        "**Comienza con lo básico:** Si eres principiante, elige plantas fáciles de cuidar como la menta, los rábanos o lechugas. ¡Te darán confianza!",
+        "**Aprovecha la verticalidad:** Usa estanterías, macetas colgantes o jardines verticales para maximizar el espacio en balcones pequeños.",
+        "**Riega con inteligencia:** Toca el sustrato antes de regar. Si se siente seco a 2-3 cm de profundidad, es hora de un buen riego.",
+        "**Composta tus residuos orgánicos:** Crea tu propio abono rico en nutrientes con restos de cocina y jardín. ¡Tus plantas lo amarán!",
+        "**Protege del sol extremo:** En verano, algunas plantas pueden necesitar sombra parcial durante las horas de mayor intensidad solar.",
+        "**Ventilación es clave:** Asegura una buena circulación de aire para prevenir hongos y enfermedades en tus plantas.",
+        "**Haz rotación de cultivos:** Si cultivas hortalizas, rota su ubicación cada temporada para evitar el agotamiento del suelo y la acumulación de plagas específicas.",
+      ];
+
+      let ultimoIndiceConsejo = -1; // Para asegurar que no se repita el último consejo
+
+      function obtenerConsejoAleatorio() {
+        let nuevoIndice;
+        do {
+          nuevoIndice = Math.floor(Math.random() * consejosVerdes.length);
+        } while (nuevoIndice === ultimoIndiceConsejo); // Evita repetir el último consejo
+        ultimoIndiceConsejo = nuevoIndice;
+        return consejosVerdes[nuevoIndice];
+      }
+
+      botonNuevoConsejo.addEventListener("click", () => {
+        textoConsejo.innerHTML = obtenerConsejoAleatorio();
+      });
+
+      // Cargar un consejo al inicio
+      document.addEventListener("DOMContentLoaded", () => {
+        textoConsejo.innerHTML = obtenerConsejoAleatorio();
+      });
+
+      // --- Lógica para la mini-aplicación 'Recomendador de Productos' y Canasta ---
+      const products = [
+        {
+          id: "pala-ergonomica",
+          name: "Pala de Mano Ergonómica",
+          category: "Herramientas",
+          description: "Ideal para plantar y trasplantar con comodidad.",
+          price: 10.0, // Precio como número para cálculos
+          image:
+            "https://m.media-amazon.com/images/I/71Y2Sxo2WuL._AC_SL1500_.jpg",
+        },
+        {
+          id: "mini-rastrillo",
+          name: "Mini Rastrillo de Jardín",
+          category: "Herramientas",
+          description:
+            "Perfecto para trabajos de precisión en macetas y jardines pequeños.",
+          price: 8.0,
+          image:
+            "https://th.bing.com/th/id/OIP.ClC-pOnrVbJoUVrHQUvaDgHaEk?r=0&o=7&pid=ImgDetMain&rs=1&qlt=90&w=315&h=180",
+        },
+        {
+          id: "tijeras-podar",
+          name: "Tijeras para Podar Compactas",
+          category: "Herramientas",
+          description:
+            "Cortes limpios y precisos para mantener tus plantas saludables.",
+          price: 15.0,
+          image:
+            "https://th.bing.com/th/id/OIP.tEY6qHFmBwP4MyD_KLATmgHaHa?r=0&rs=1&pid=ImgDetMain",
+        },
+        {
+          id: "pulverizador-agua",
+          name: "Pulverizador de Agua para Plantas",
+          category: "Herramientas",
+          description:
+            "Ideal para riego delicado y aplicación de tratamientos foliares.",
+          price: 7.5,
+          image:
+            "https://i5.walmartimages.com/asr/f771b01e-aef3-4d3d-b552-b97f9c8ca3bb.1849a73a6e0549a6fe2fe77d2a35f742.jpeg",
+        },
+        {
+          id: "tierra-premium",
+          name: "Tierra para Macetas Premium",
+          category: "Sustratos",
+          description:
+            "Mezcla rica en nutrientes para un crecimiento vigoroso.",
+          price: 12.0,
+          image:
+            "https://http2.mlstatic.com/D_NQ_NP_689857-MLA49602538281_042022-O.webp",
+        },
+        {
+          id: "sustrato-cactus",
+          name: "Sustrato para Cactus y Suculentas",
+          category: "Sustratos",
+          description: "Drenaje óptimo para evitar el exceso de humedad.",
+          price: 9.0,
+          image:
+            "https://th.bing.com/th/id/R.49b9574d6bdc64245450f34262ac1079?rik=DVjr2QNuLXTTBw&pid=ImgRaw&r=0",
+        },
+        {
+          id: "semillas-albahaca",
+          name: "Semillas de Albahaca Orgánica",
+          category: "Semillas",
+          description: "Cultiva tu propia albahaca fresca en casa.",
+          price: 3.5,
+          image:
+            "https://img.agriexpo.online/es/images_ag/photo-mg/192663-19999556.jpg",
+        },
+        {
+          id: "semillas-tomate",
+          name: "Semillas de Tomate Cherry 'Mini Rojo'",
+          category: "Semillas",
+          description: "Tomates pequeños y dulces, perfectos para macetas.",
+          price: 4.0,
+          image:
+            "https://ecojaral.com/1650-large_default/semillas-tomate-cherry-rojo.jpg",
+        },
+        {
+          id: "maceta-terracota",
+          name: "Maceta de Terracota Clásica",
+          category: "Macetas",
+          description: "Transpirable y estética, ideal para diversas plantas.",
+          price: 6.0,
+          image: "https://m.media-amazon.com/images/I/41+M1ITSfFL.jpg",
+        },
+        {
+          id: "maceta-colgante",
+          name: "Maceta Colgante con Cadena",
+          category: "Macetas",
+          description: "Maximiza tu espacio vertical con estilo.",
+          price: 11.0,
+          image:
+            "https://th.bing.com/th/id/OIP.plqGigO3tnCx1t4obET-wAAAA?r=0&rs=1&pid=ImgDetMain",
+        },
+        {
+          id: "fertilizante-liquido",
+          name: "Fertilizante Líquido Universal",
+          category: "Fertilizantes",
+          description:
+            "Aporta los nutrientes esenciales para un crecimiento saludable.",
+          price: 9.5,
+          image:
+            "https://th.bing.com/th/id/OIP.awXrLgWfN7Z359Lm-tenHQHaHa?r=0&o=7&pid=ImgDetMain&rs=1&qlt=90&w=180&h=180",
+        },
+        {
+          id: "humus-lombriz",
+          name: "Humus de Lombriz Orgánico (1kg)",
+          category: "Fertilizantes",
+          description:
+            "Enriquecedor natural del suelo, ideal para jardinería ecológica.",
+          price: 14.0,
+          image:
+            "https://promart.vteximg.br/arquivos/ids/1484445-1000-1000/image-cb04a9c2afea4ab49b905abc43ec31a1.jpg?v=637626736942500000",
+        },
+        {
+          id: "kit-siembra-principiantes",
+          name: "Kit de Siembra para Principiantes",
+          category: "Herramientas",
+          description: "Todo lo necesario para empezar tu huerto urbano.",
+          price: 30.0,
+          image:
+            "https://th.bing.com/th/id/OIP.WCX_ZL1tGLwhcHVpZatc_gHaHa?r=0&rs=1&pid=ImgDetMain",
+        },
+        {
+          id: "guantes-jardineria",
+          name: "Guantes de Jardinería Resistentes",
+          category: "Herramientas",
+          description: "Protege tus manos mientras trabajas en el jardín.",
+          price: 10.0,
+          image:
+            "https://th.bing.com/th/id/OIP.ESFpiSiyqrgTPGCUt2bl9AHaHa?r=0&rs=1&pid=ImgDetMain",
+        },
+        {
+          id: "kit-mini-herramientas-suculentas",
+          name: "Kit de Mini Herramientas para Suculentas",
+          category: "Herramientas",
+          description:
+            "Perfecto para el cuidado delicado de tus suculentas y cactus.",
+          price: 18.0,
+          image:
+            "https://http2.mlstatic.com/D_NQ_NP_615909-MLC75971249646_052024-O.webp",
+        },
+      ];
+
+      const categorySelect = document.getElementById("categorySelect");
+      const searchProductsBtn = document.getElementById("searchProductsBtn");
+      const productList = document.getElementById("productList");
+
+      // --- Lógica de la Canasta de Productos ---
+      let cart = []; // Array para almacenar los productos en la canasta
+      const cartModal = document.getElementById("cartModal");
+      const closeCartBtn = document.querySelector(".close-button");
+      const openCartBtn = document.getElementById("openCartBtn");
+      const cartItemsContainer = document.getElementById("cartItems");
+      const cartTotalDisplay = document.getElementById("cartTotal");
+      const cartCountDisplay = document.getElementById("cartCount");
+
+      // Función para mostrar/ocultar el modal
+      openCartBtn.addEventListener("click", () => {
+        cartModal.style.display = "flex";
+        renderCart(); // Renderizar la canasta cada vez que se abre
+      });
+
+      closeCartBtn.addEventListener("click", () => {
+        cartModal.style.display = "none";
+      });
+
+      // Cerrar el modal haciendo clic fuera de él
+      window.addEventListener("click", (event) => {
+        if (event.target === cartModal) {
+          cartModal.style.display = "none";
+        }
+      });
+
+      // Función para añadir un producto a la canasta
+      function addToCart(productId) {
+        const productToAdd = products.find((p) => p.id === productId);
+        if (productToAdd) {
+          const existingItem = cart.find((item) => item.id === productId);
+          if (existingItem) {
+            existingItem.quantity++;
+          } else {
+            cart.push({ ...productToAdd, quantity: 1 });
+          }
+          updateCartCount();
+          renderCart(); // Actualizar la vista de la canasta si está abierta
+        }
+      }
+
+      // Función para actualizar la cantidad de un producto
+      function updateQuantity(productId, change) {
+        const itemIndex = cart.findIndex((item) => item.id === productId);
+        if (itemIndex > -1) {
+          cart[itemIndex].quantity += change;
+          if (cart[itemIndex].quantity <= 0) {
+            cart.splice(itemIndex, 1); // Eliminar si la cantidad llega a 0 o menos
+          }
+          updateCartCount();
+          renderCart();
+        }
+      }
+
+      // Función para eliminar un producto de la canasta
+      function removeFromCart(productId) {
+        cart = cart.filter((item) => item.id !== productId);
+        updateCartCount();
+        renderCart();
+      }
+
+      // Función para renderizar la canasta
+      function renderCart() {
+        cartItemsContainer.innerHTML = "";
+        let total = 0;
+
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = "<p>Tu canasta está vacía.</p>";
+          cartTotalDisplay.textContent = "Total: $0.00";
+          return;
+        }
+
+        cart.forEach((item) => {
+          const itemPrice = item.price * item.quantity;
+          total += itemPrice;
+
+          const cartItemDiv = document.createElement("li");
+          cartItemDiv.classList.add("cart-item");
+          cartItemDiv.innerHTML = `
+            <div class="cart-item-info">
+                <img src="${item.image}" alt="${item.name}" />
+                <div class="cart-item-details">
+                    <strong>${item.name}</strong>
+                    <span>$${item.price.toFixed(2)} c/u</span>
+                </div>
+            </div>
+            <div class="cart-item-controls">
+                <button class="quantity-button" data-id="${
+                  item.id
+                }" data-action="decrease">-</button>
+                <span class="quantity-display">${item.quantity}</span>
+                <button class="quantity-button" data-id="${
+                  item.id
+                }" data-action="increase">+</button>
+                <button class="remove-button" data-id="${
+                  item.id
+                }">Eliminar</button>
+            </div>
+          `;
+          cartItemsContainer.appendChild(cartItemDiv);
+        });
+
+        cartTotalDisplay.textContent = `Total: $${total.toFixed(2)}`;
+
+        // Añadir event listeners a los botones de cantidad y eliminar
+        cartItemsContainer
+          .querySelectorAll(".quantity-button")
+          .forEach((button) => {
+            button.addEventListener("click", (event) => {
+              const productId = event.target.dataset.id;
+              const action = event.target.dataset.action;
+              if (action === "increase") {
+                updateQuantity(productId, 1);
+              } else if (action === "decrease") {
+                updateQuantity(productId, -1);
+              }
+            });
+          });
+
+        cartItemsContainer
+          .querySelectorAll(".remove-button")
+          .forEach((button) => {
+            button.addEventListener("click", (event) => {
+              const productId = event.target.dataset.id;
+              removeFromCart(productId);
+            });
+          });
+      }
+
+      // Función para actualizar el contador de la canasta en la navegación
+      function updateCartCount() {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountDisplay.textContent = totalItems;
+      }
+
+      function displayProducts(filterCategory) {
+        productList.innerHTML = ""; // Limpiar productos existentes
+
+        const filteredProducts =
+          filterCategory === "Todas"
+            ? products
+            : products.filter((product) => product.category === filterCategory);
+
+        if (filteredProducts.length === 0) {
+          productList.innerHTML =
+            "<p>No se encontraron productos en esta categoría.</p>";
+          return;
+        }
+
+        filteredProducts.forEach((product) => {
+          const productItem = document.createElement("div");
+          productItem.classList.add("product-item");
+
+          productItem.innerHTML = `
+            <img src="${product.image}" alt="${
+            product.name
+          }" onerror="this.onerror=null; this.src='https://placehold.co/100x100/cccccc/000000?text=Imagen+No+Cargada';" />
+            <h4>${product.name}</h4>
+            <p>${product.description}</p>
+            <span class="price">$${product.price.toFixed(2)}</span>
+            <button class="interactive-button add-to-cart-btn" data-id="${
+              product.id
+            }">Comprar</button>
+          `;
+          productList.appendChild(productItem);
+        });
+
+        // Añadir event listeners a los botones de "Comprar"
+        document.querySelectorAll(".add-to-cart-btn").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            const productId = event.target.dataset.id;
+            addToCart(productId);
+          });
+        });
+      }
+
+      // Cargar todos los productos al inicio y actualizar el contador de la canasta
+      document.addEventListener("DOMContentLoaded", () => {
+        displayProducts("Todas");
+        updateCartCount();
+      });
+
+      searchProductsBtn.addEventListener("click", () => {
+        const selectedCategory = categorySelect.value;
+        displayProducts(selectedCategory);
+      });
+    </script>
+  </body>
+</html>
